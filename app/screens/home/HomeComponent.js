@@ -9,9 +9,7 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 
 export default class HomeComponent extends Component {
     onSuccess(e) {
-        Linking
-            .openURL(e.data)
-            .catch(err => console.error('An error has occurred', err));
+        alert(e.data);
     }
 
     render() {
@@ -20,6 +18,10 @@ export default class HomeComponent extends Component {
                 <Text>HomeComponent</Text>
                 <QRCodeScanner
                     onRead={this.onSuccess.bind(this)}
+                    topContent={
+                        <Text>Scanner</Text>
+                    }
+                    showMarker={true}
                 />
             </View>
         );

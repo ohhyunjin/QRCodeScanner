@@ -29,7 +29,10 @@ export default class LoginComponent extends Component {
                     placeholder='Password'
                     secureTextEntry={true}
                 />
-                <TouchableOpacity style={styles.submitButton}>
+                <TouchableOpacity
+                    style={styles.submitButton}
+                    onPress={() => this.props.navigation.navigate('Home')}
+                >
                     <Text>Login</Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
