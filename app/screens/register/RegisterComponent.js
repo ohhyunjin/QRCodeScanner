@@ -2,30 +2,26 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
-    StyleSheet,
-    KeyboardAvoidingView,
     TouchableOpacity,
-    ActivityIndicator,
+    KeyboardAvoidingView,
     TextInput,
     StatusBar,
 } from 'react-native';
-import PropTypes from 'prop-types';
 
-export default class LoginComponent extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+export default class RegisterComponent extends Component {
     render() {
         return(
-            <KeyboardAvoidingView behavior='padding' style={styles.container}>
+            <KeyboardAvoidingView style={styles.container}>
                 <StatusBar hidden />
-                <Text style={styles.header}>Welcome!</Text>
+                <Text style={styles.header}>Register</Text>
+                <TextInput
+                    style={styles.formItem}
+                    placeholder='Full name'
+                />
                 <TextInput
                     style={styles.formItem}
                     placeholder='Email'
                 />
-                <View style={{ height: 20 }} />
                 <TextInput
                     style={styles.formItem}
                     placeholder='Password'
@@ -33,9 +29,9 @@ export default class LoginComponent extends Component {
                 />
                 <TouchableOpacity
                     style={styles.submitButton}
-                    onPress={() => this.props.navigation.navigate('Home')}
+                    onPress={() => alert('Register complete!')}
                 >
-                    <Text>Login</Text>
+                    <Text>Register</Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
         );

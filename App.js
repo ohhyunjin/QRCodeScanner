@@ -2,8 +2,15 @@ import React, {Component} from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LoginComponent from './app/screens/login/LoginComponent';
 import HomeComponent from './app/screens/home/HomeComponent';
+import RegisterComponent from './app/screens/RegisterComponent';
 
 const MainStack = createStackNavigator({
+    Register: {
+        screen: RegisterComponent,
+        navigationOptions: {
+            header: null,
+        }
+    },
     Login: {
         screen: LoginComponent,
         navigationOptions: {
@@ -12,6 +19,9 @@ const MainStack = createStackNavigator({
     },
     Home: {
         screen: HomeComponent,
+        navigationOptions: {
+            header: null,
+        }
     }
 });
 
