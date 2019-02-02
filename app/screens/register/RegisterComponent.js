@@ -6,30 +6,54 @@ import {
     KeyboardAvoidingView,
     TextInput,
     StatusBar,
+    StyleSheet,
 } from 'react-native';
+import firebase from 'react-native-firebase';
 
 export default class RegisterComponent extends Component {
+    state = {
+        fullName: '',
+        email: '',
+        password: '',
+        errorMessage: null,
+    }
+
+    handleSignup = () => {
+        const { email, password } = this.state
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(user => this.props.navigation.navigate('Home'))
+            .catch(error => this.setState({errorMessage: error.message}))
+    }
+
     render() {
         return(
             <KeyboardAvoidingView style={styles.container}>
                 <StatusBar hidden />
                 <Text style={styles.header}>Register</Text>
+                <Text>{this.state.errorMessage}</Text>
                 <TextInput
                     style={styles.formItem}
                     placeholder='Full name'
+                    onChangeText={fullName => this.setState({ fullName })}
                 />
                 <TextInput
                     style={styles.formItem}
                     placeholder='Email'
+                    autoCapitalize='none'
+                    onChangeText={email => this.setState({ email })}
                 />
                 <TextInput
                     style={styles.formItem}
                     placeholder='Password'
-                    secureTextEntry={true}
+                    secureTextEntry
+                    autoCapitalize='none'
+                    onChangeText={password => this.setState({ password })}
                 />
                 <TouchableOpacity
                     style={styles.submitButton}
-                    onPress={() => alert('Register complete!')}
+                    onPress={this.handleSignup}
                 >
                     <Text>Register</Text>
                 </TouchableOpacity>

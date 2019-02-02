@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LoginComponent from './app/screens/login/LoginComponent';
 import HomeComponent from './app/screens/home/HomeComponent';
-import RegisterComponent from './app/screens/RegisterComponent';
+import RegisterComponent from './app/screens/register/RegisterComponent';
 
 const MainStack = createStackNavigator({
     Register: {
